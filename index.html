@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Curso Web – Plantilla con Búsquedas por Sección</title>
+
+    <!-- Bootstrap 5.3.7 CSS desde CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+
+    <!-- (Opcional) Fuente Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+      :root {
+        /* Personaliza colores de Bootstrap sin compilar */
+        --bs-primary: #6f42c1;      /* morado */
+        --bs-secondary: #6c757d;
+        --bs-success: #198754;
+        --bs-danger: #dc3545;
+        --bs-warning: #ffc107;
+        --bs-info: #0dcaf0;
+        --bs-light: #f8f9fa;
+        --bs-dark: #212529;
+        --bs-body-font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+      }
+
+      body {
+        font-family: var(--bs-body-font-family);
+      }
+
+      .hero {
+        background: linear-gradient(180deg, rgba(111,66,193,.12), rgba(111,66,193,.03));
+        border-bottom: 1px solid rgba(0,0,0,.05);
+      }
+
+      .card:hover { transform: translateY(-2px); box-shadow: 0 0.5rem 1rem rgba(0,0,0,.08); }
+      .card { transition: transform .2s ease, box-shadow .2s ease; }
+
+      /* Botón circular flotante de ejemplo (arriba) */
+      .to-top { position: fixed; right: 1rem; bottom: 1rem; z-index: 1030; }
+    </style>
+  </head>
+  <body data-bs-theme="light">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="#inicio">Mi Curso Web</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarMain">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="#inicio">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="#proyectos">Proyectos</a></li>
+            <li class="nav-item"><a class="nav-link" href="#articulos">Artículos</a></li>
+          </ul>
+          <!-- (Opcional) Búsqueda global del sitio -->
+          <form class="d-flex" role="search" onsubmit="return false;">
+            <input class="form-control me-2" type="search" placeholder="Buscar en el sitio (demo)" aria-label="Buscar">
+            <button class="btn btn-outline-success" type="button">Buscar</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <header id="inicio" class="hero py-5">
+      <div class="container">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-8">
+            <h1 class="display-5 fw-bold mb-3">Plantilla Bootstrap con <span class="text-primary">búsquedas por sección</span></h1>
+            <p class="lead text-body-secondary mb-4">Usa este archivo como base para tus clases: incluye una navbar, dos secciones con tarjetas y una barra de búsqueda que filtra elementos <em>dentro de cada sección</em>.</p>
+            <a href="#proyectos" class="btn btn-primary btn-lg">Ver Proyectos</a>
+            <a href="#articulos" class="btn btn-outline-secondary btn-lg ms-2">Ver Artículos</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Sección: Proyectos -->
+    <section id="proyectos" class="py-5">
+      <div class="container">
+        <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-3 mb-3">
+          <h2 class="m-0">Proyectos</h2>
+          <div class="d-flex align-items-center gap-2 w-100 w-md-auto" role="search">
+            <label for="search-proyectos" class="visually-hidden">Buscar en Proyectos</label>
+            <input id="search-proyectos" class="form-control" type="search" placeholder="Buscar en Proyectos" aria-label="Buscar en Proyectos" data-section-search data-target="#lista-proyectos" data-clear-btn="#clear-proyectos">
+            <button id="clear-proyectos" type="button" class="btn btn-outline-secondary">Limpiar</button>
+          </div>
+        </div>
+
+        <div id="lista-proyectos" class="row g-4">
+          <div class="col-12 col-md-6 col-lg-4" data-item>
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Robot seguidor de línea</h5>
+                <p class="card-text">Proyecto con Arduino, sensores infrarrojos y control PID básico.</p>
+                <span class="badge text-bg-primary">Arduino</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4" data-item>
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Página web del colegio</h5>
+                <p class="card-text">Sitio informativo con Bootstrap: navbar, cards y formulario de contacto.</p>
+                <span class="badge text-bg-secondary">Bootstrap</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4" data-item>
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">App de notas</h5>
+                <p class="card-text">Aplicación web sencilla para gestionar tareas, usando LocalStorage.</p>
+                <span class="badge text-bg-info">Web</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4" data-item>
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Calculadora científica</h5>
+                <p class="card-text">Operaciones, historial y teclas rápidas con eventos de teclado.</p>
+                <span class="badge text-bg-dark">JS</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4" data-item>
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Tienda virtual</h5>
+                <p class="card-text">Catálogo, carrito y filtros por categoría en una SPA básica.</p>
+                <span class="badge text-bg-success">Frontend</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4" data-item>
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Portafolio personal</h5>
+                <p class="card-text">Diseño responsivo, grid de proyectos y formulario con validación.</p>
+                <span class="badge text-bg-warning">UI</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección: Artículos -->
+    <section id="articulos" class="py-5 bg-body-tertiary">
+      <div class="container">
+        <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-3 mb-3">
+          <h2 class="m-0">Artículos</h2>
+          <div class="d-flex align-items-center gap-2 w-100 w-md-auto" role="search">
+            <label for="search-articulos" class="visually-hidden">Buscar en Artículos</label>
+            <input id="search-articulos" class="form-control" type="search" placeholder="Buscar en Artículos" aria-label="Buscar en Artículos" data-section-search data-target="#lista-articulos" data-clear-btn="#clear-articulos">
+            <button id="clear-articulos" type="button" class="btn btn-outline-secondary">Limpiar</button>
+          </div>
+        </div>
+
+        <div id="lista-articulos" class="row g-4">
+          <div class="col-12 col-md-6" data-item>
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Qué es HTML y cómo empezar</h5>
+                <p class="card-text">Estructura básica, etiquetas comunes y buenas prácticas.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6" data-item>
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">CSS en 20 minutos</h5>
+                <p class="card-text">Selectores, cajas, colores y tipografías con ejemplos.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6" data-item>
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">JavaScript para principiantes</h5>
+                <p class="card-text">Variables, funciones, eventos y manipulación del DOM.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6" data-item>
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Git y GitHub rápido</h5>
+                <p class="card-text">Iniciar repos, commits, ramas y publicar tu sitio.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 bg-dark text-light">
+      <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-2">
+        <span>© <span id="year"></span> Mi Curso Web</span>
+        <a href="#inicio" class="btn btn-outline-light btn-sm">Volver arriba</a>
+      </div>
+    </footer>
+
+    <!-- Botón flotante a modo de ejemplo -->
+    <a href="#inicio" class="btn btn-primary rounded-circle to-top" aria-label="Ir al inicio">↑</a>
+
+    <!-- Bootstrap JS (Bundle con Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+
+    <!-- JS: Búsqueda por sección (simple y reutilizable) -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Año en footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        const attachSectionSearch = (input) => {
+          const target = document.querySelector(input.dataset.target);
+          if (!target) return;
+          const items = Array.from(target.querySelectorAll('[data-item]'));
+
+          const apply = () => {
+            const q = input.value.trim().toLowerCase();
+            items.forEach(item => {
+              const match = item.textContent.toLowerCase().includes(q);
+              item.classList.toggle('d-none', !match);
+            });
+          };
+
+          input.addEventListener('input', apply);
+
+          // Botón "Limpiar"
+          const clearSel = input.dataset.clearBtn;
+          if (clearSel) {
+            const btn = document.querySelector(clearSel);
+            if (btn) btn.addEventListener('click', () => { input.value = ''; apply(); input.focus(); });
+          }
+        };
+
+        document.querySelectorAll('[data-section-search]').forEach(attachSectionSearch);
+      });
+    </script>
+  </body>
+</html>
