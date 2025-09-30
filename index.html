@@ -13,6 +13,7 @@
       text-align: center;
     }
 
+    /* Barra de navegación */
     nav {
       background-color: #333;
       color: white;
@@ -26,11 +27,27 @@
       font-weight: bold;
     }
 
+    /* Encabezado con imagen de fondo */
     header {
       background: url("images/patron-nubes.webp") no-repeat center center;
       background-size: cover;
       color: white;
       padding: 80px 20px;
+      position: relative;
+    }
+
+    header .overlay {
+      background: rgba(0, 0, 0, 0.6); /* Capa oscura semitransparente */
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    header .contenido {
+      position: relative;
+      z-index: 1;
     }
 
     header img {
@@ -39,6 +56,11 @@
       margin: auto;
     }
 
+    header h1, header p {
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+    }
+
+    /* Secciones */
     section {
       padding: 40px 20px;
     }
@@ -55,6 +77,7 @@
       box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
     }
 
+    /* Pie de página */
     footer {
       background-color: #333;
       color: white;
@@ -72,11 +95,14 @@
     <a href="#contacto">Contacto</a>
   </nav>
 
-  <!-- Encabezado con logo -->
+  <!-- Encabezado con overlay -->
   <header id="inicio">
-    <img src="images/logo.png" alt="Logo Tejiendo Sueños">
-    <h1>Bienvenidos a Tejiendo Sueños</h1>
-    <p>Artesanías hechas a mano con amor ❤️</p>
+    <div class="overlay"></div>
+    <div class="contenido">
+      <img src="images/logo.png" alt="Logo Tejiendo Sueños">
+      <h1>Bienvenidos a Tejiendo Sueños</h1>
+      <p>Artesanías hechas a mano con amor ❤️</p>
+    </div>
   </header>
 
   <!-- Sección de productos -->
@@ -108,3 +134,4 @@
 
 </body>
 </html>
+
